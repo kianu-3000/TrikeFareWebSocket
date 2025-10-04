@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
@@ -45,5 +46,5 @@ app.post('/notify', (req, res) => {
 
     res.send({ status: 'ok' });
 });
-
-server.listen(4000, () => console.log('WebSocket server running on port 4000'));
+const PORT = process.env.PORT || 4000;
+server.listen(PORT, () => console.log(`WebSocket server running on port ${PORT}`));
