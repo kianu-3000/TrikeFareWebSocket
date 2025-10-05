@@ -44,6 +44,11 @@ app.post('/notify', (req, res) => {
         io.emit('booking_canceled', data); // user will cancel
     }
 
+    if (event === 'driver_cancelled') {
+        console.log(data)
+        io.to(`user_${data.user_id}`).emit('booking_canceled', data); // driver will cancel
+    }
+
     res.send({ status: 'ok' });
 });
 const PORT = process.env.PORT || 4000;
