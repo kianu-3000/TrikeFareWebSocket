@@ -46,7 +46,7 @@ app.post('/notify', (req, res) => {
 
     if (event === 'driver_cancelled') {
         console.log(data)
-        io.to(`user_${data.user_id}`).emit('driver_cancelled', data); // driver will cancel
+        io.to(`user_${data.user_id}_${data.id}`).emit('driver_cancelled', data); // driver will cancel
     }
 
     if (event === 'driver_finished') {
