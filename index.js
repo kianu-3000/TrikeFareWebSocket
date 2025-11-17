@@ -35,7 +35,7 @@ app.post('/notify', (req, res) => {
 
     if (event === 'booking_accepted') {
         console.log(data)
-        io.to(`user_${data.user_id}`).emit('booking_accepted', data); // only the passenger
+        io.to(`user_${data.user_id}_${data.id}`).emit('booking_accepted', data); // only the passenger
     }
 
 
