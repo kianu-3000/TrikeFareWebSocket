@@ -41,7 +41,7 @@ app.post('/notify', (req, res) => {
 
     if (event === 'booking_canceled') {
         console.log(data)
-        io.emit('booking_canceled', data); // user will cancel
+        io.to(`user_${data.user_id}_${data.id}`).emit('booking_canceled', data); // user will cancel
     }
 
     if (event === 'driver_cancelled') {
