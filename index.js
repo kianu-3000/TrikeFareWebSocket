@@ -35,28 +35,28 @@ app.post('/notify', (req, res) => {
 
     if (event === 'booking_accepted') {
         console.log(data)
-        io.to(`user_${data.user_id}_${data.bookid}`).emit('booking_accepted', data); // only the passenger
+        io.to(`user_${data.user_id}_${data.book_id.bookid}`).emit('booking_accepted', data); // only the passenger
     }
 
 
     if (event === 'booking_canceled') {
         console.log(data)
-        io.to(`user_${data.user_id}_${data.bookid}`).emit('booking_canceled', data); // user will cancel
+        io.to(`user_${data.user_id}_${data.book_id.bookid}`).emit('booking_canceled', data); // user will cancel
     }
 
     if (event === 'driver_cancelled') {
         console.log(data)
-        io.to(`user_${data.user_id}_${data.bookid}`).emit('driver_cancelled', data); // driver will cancel
+        io.to(`user_${data.user_id}_${data.book_id.bookid}`).emit('driver_cancelled', data); // driver will cancel
     }
 
     if (event === 'driver_finished') {
         console.log(data)
-        io.to(`user_${data.user_id}_${data.bookid}`).emit('driver_finished', data); // driver will cancel
+        io.to(`user_${data.user_id}_${data.book_id.bookid}`).emit('driver_finished', data); // driver will cancel
     }
 
     if (event === 'driver_completed') {
         console.log(data)
-        io.to(`user_${data.user_id}_${data.bookid}`).emit('driver_completed', data); // driver will cancel
+        io.to(`user_${data.user_id}_${data.book_id.bookid}`).emit('driver_completed', data); // driver will cancel
     }
 
     res.send({ status: 'ok' });
